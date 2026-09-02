@@ -138,7 +138,8 @@
     border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); padding: 46px 0; color: #fff;
   }
   .founding-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
-  .founding-text .eyebrow { color: var(--gold-soft); margin-bottom: 10px; }
+  .founding-text .eyebrow { color: var(--gold-soft); margin-bottom: 14px; font-size: 1.15rem; letter-spacing: 0.12em; font-weight: 500; }
+  .founding-text .eyebrow::before, .founding-text .eyebrow::after { width: 36px; }
   .founding-text h3 { color: #fff; font-size: 1.5rem; font-weight: 420; font-style: italic; }
   .founding-text p { margin: 10px 0 0; color: #efece2; font-size: 1.04rem; max-width: 54ch; font-weight: 400; line-height: 1.6; }
   .founding-text p strong { color: var(--gold-soft); font-weight: 700; }
@@ -373,14 +374,15 @@
   <section class="section">
     <div class="container" style="max-width:920px;">
       <div class="section-head left" style="margin-bottom:40px;">
-        <span class="eyebrow">Founding Membership</span>
-        <h2>Reserve Your Spot as a Founding Member</h2>
+        <span class="eyebrow" style="font-size:1.3rem;letter-spacing:0.12em;">Founding Membership</span>
+        <h2 style="font-size:1.8rem;">Reserve Your Spot as a Founding Member</h2>
       </div>
       <div class="reserve-grid">
         <div class="reserve-intro">
           <p>In order to provide truly personal care, I'm keeping my patient panel intentionally small.</p>
           <p>To reserve your Founding Membership, share your information below and I'll follow up personally to confirm next steps.</p>
-          <p>Care begins October 1, 2026, and Founding Members lock in their rate for three years.</p>
+          <p style="margin-bottom:16px;"><strong>Founding Membership is reserved for those who join in 2026.</strong></p>
+          <p><strong>New-member rates will increase in 2027,</strong> while Founding Members <strong>secure the 2026 membership rate for their first three years of care.</strong></p>
         </div>
         <form action="https://formspree.io/f/mqewebdo" method="POST" class="reserve-form">
           <input type="hidden" name="_subject" value="New Founding Membership Reservation - dryun.org" />
