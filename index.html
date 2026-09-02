@@ -63,7 +63,6 @@
   .top-bar span { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); }
   .site-header { background: var(--paper); border-bottom: 1px solid var(--line); position: relative; z-index: 5; }
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
-  .brand { font-size: 1.7rem; color: var(--ink); }
   .nav-links { display: flex; gap: 36px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
   .nav-links a { padding-bottom: 3px; border-bottom: 1px solid transparent; }
   .nav-links a:hover, .nav-links a.active { border-color: var(--gold); color: var(--gold); }
@@ -108,6 +107,7 @@
   .hero-split-text .eyebrow { color: var(--gold-soft); margin-bottom: 20px; }
   .hero-split-text h1 { color: #fff; font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 440; line-height: 1.2; }
   .hero-tagline { margin: 22px 0 0; font-size: 1.05rem; color: #e7e3d6; font-weight: 300; max-width: 46ch; }
+  .hero-benefit { margin: 16px 0 0; font-size: 0.94rem; color: var(--gold-soft); font-weight: 400; max-width: 46ch; line-height: 1.6; }
   .hero-tagline strong { font-weight: 500; color: #fff; }
   .hero-actions { display: flex; align-items: center; gap: 26px; margin-top: 32px; flex-wrap: wrap; }
   .hero-credentials {
@@ -139,7 +139,8 @@
   .founding-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
   .founding-text .eyebrow { color: var(--gold-soft); margin-bottom: 10px; }
   .founding-text h3 { color: #fff; font-size: 1.5rem; font-weight: 420; font-style: italic; }
-  .founding-text p { margin: 10px 0 0; color: #c9c5b6; font-size: 0.94rem; max-width: 54ch; font-weight: 300; }
+  .founding-text p { margin: 10px 0 0; color: #efece2; font-size: 1.04rem; max-width: 54ch; font-weight: 400; line-height: 1.6; }
+  .founding-text p strong { color: var(--gold-soft); font-weight: 700; }
   .founding-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; flex-shrink: 0; }
   @media (max-width: 760px) { .founding-grid { flex-direction: column; align-items: flex-start; } .founding-actions { align-items: flex-start; } }
 
@@ -240,6 +241,15 @@
   @media (max-width: 880px) { .steps { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
   .step { border-top: 1px solid var(--gold); padding-top: 20px; }
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  @media (max-width: 880px) { .review-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .review-grid blockquote {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 1.08rem; color: var(--ink);
+    line-height: 1.6; margin: 0 0 18px;
+  }
+  .review-grid cite { display: block; font-style: normal; font-family: 'Jost'; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-deep); }
+  .review-caption { text-align: center; margin-top: 50px; font-size: 0.82rem; color: var(--muted); }
+  .review-caption a { color: var(--gold-deep); margin-left: 8px; }
   .step .num { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.7rem; color: var(--gold); margin-bottom: 10px; }
   .step h3 { font-size: 0.98rem; margin-bottom: 8px; font-weight: 500; }
   .step p { color: var(--muted); font-size: 0.9rem; margin: 0; font-weight: 300; }
@@ -271,6 +281,20 @@
     outline: none; font-family: 'Jost', Arial, sans-serif; box-sizing: border-box;
   }
   input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,138,63,0.15); }
+
+  .reserve-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: start; }
+  @media (max-width: 860px) { .reserve-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .reserve-intro p { color: var(--muted); font-size: 1rem; margin: 0 0 18px; line-height: 1.7; }
+  .reserve-form { display: grid; gap: 20px; background: #fff; border: 1px solid var(--line); padding: 36px; box-shadow: 0 18px 40px rgba(20,23,31,0.06); }
+  .req { font-weight: 300; color: var(--muted); font-size: 0.78rem; }
+  .radio-row { display: flex; gap: 26px; }
+  .radio-row .radio-option { margin-right: 26px; }
+  .radio-row .radio-option:last-child { margin-right: 0; }
+  .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
+  .radio-option input, .checkbox-option input { width: auto; min-height: auto; }
+  .disclosure-box { background: var(--paper-2); border: 1px solid var(--line); padding: 18px 20px; }
+  .disclosure-box p { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .disclosure-box a { color: var(--gold-deep); text-decoration: underline; }
 
   /* FAQ */
   .faq-list { background: #fff; border: 1px solid var(--line); padding: 8px 40px; box-shadow: 0 18px 40px rgba(20,23,31,0.06); }
@@ -320,10 +344,10 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="care.html">Care</a><a href="midlife.html">Menopause &amp; Midlife</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
-      <a href="contact.html#contact" class="nav-cta-mobile">Schedule a Meet &amp; Greet</a>
+      <a href="reserve.html" class="nav-cta-mobile">Become a Founding Member</a>
     </nav>
     <div class="nav-right">
-      <a class="nav-cta" href="contact.html#contact">Schedule a Meet &amp; Greet</a>
+      <a class="nav-cta" href="reserve.html">Become a Founding Member</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -351,8 +375,9 @@
         <span class="eyebrow">Concierge Family Medicine &middot; Dallas</span>
         <h1>Concierge medicine, where art meets science.</h1>
         <p class="hero-tagline"><strong>Chong &ldquo;Joy&rdquo; Yun, MD.</strong> Science provides the knowledge. The art is knowing you &mdash; and applying that knowledge in a way that fits only you.</p>
+        <p class="hero-benefit">Unhurried visits. Direct physician access. Same- or next-day care. Comprehensive primary care from a physician who knows you.</p>
         <div class="hero-actions">
-          <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Meet &amp; Greet</a>
+          <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Complimentary Meet &amp; Greet</a>
           <a class="text-link" href="contact.html">Contact Info</a>
         </div>
         <div class="hero-credentials">
@@ -368,18 +393,61 @@
     </div>
   </section>
 
+  <section class="section" style="background:var(--paper-2);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Experience</span>
+        <h2>More time. More access. One physician who knows you.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Unhurried visits</h3><p>Up to 60 minutes to talk through what actually matters.</p></div>
+        <div class="step"><h3>Direct physician access</h3><p>Reach Dr. Yun directly when you need guidance.</p></div>
+        <div class="step"><h3>Same- or next-day care</h3><p>Timely appointments when something comes up.</p></div>
+        <div class="step"><h3>Continuity that matters</h3><p>One physician who knows your history, priorities and health over time.</p></div>
+      </div>
+      <p style="text-align:center;margin-top:44px;">
+        <a class="text-link" href="care.html">See what's included &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Patients</span>
+        <h2>Trusted for over a decade. Now with more time to care.</h2>
+      </div>
+      <div class="review-grid">
+        <blockquote>
+          &ldquo;I am a physician myself and have chosen Dr. Yun as my PCP for several years. If you want the kind of doctor that another doctor would see, Dr. Yun is the one.&rdquo;
+          <cite>&mdash; Omar H.</cite>
+        </blockquote>
+        <blockquote>
+          &ldquo;I have been going to Dr Yun for 8 years&hellip; My entire family has now switched their primary Dr to Dr Yun. She listens to you. Does not rush you. Is thorough with her diagnosis and is super caring.&rdquo;
+          <cite>&mdash; Regina C.</cite>
+        </blockquote>
+        <blockquote>
+          &ldquo;I am impressed by her outstanding diagnostic skills &mdash; always accurately identifying my problems and addressing them with effective treatment.&rdquo;
+          <cite>&mdash; Irene L.</cite>
+        </blockquote>
+      </div>
+      <p class="review-caption">Excerpts from publicly posted Google patient reviews.</p>
+    </div>
+  </section>
+
   <section class="founding-strip">
     <div class="container founding-grid">
       <div class="founding-text">
         <span class="eyebrow">Now Welcoming Founding Members</span>
         <h3>Founding Membership &mdash; 2026</h3>
-        <p>As a thank-you to the patients who are building this practice with me from the very beginning, Founding Members will receive a preferred membership rate, honored for their first three years. Beginning in 2027, new members will join at the standard membership rate.</p>
-        <p>Founding Membership is available through December 31, 2026.</p>
+        <p>As a thank-you to the patients building this practice with me from the very beginning, <strong>2026 Founding Members can lock in their annual membership rate for three full years &mdash; before rates increase in 2027.</strong> Your first annual membership payment must be received by December 31, 2026 to secure the Founding Member rate.</p>
       </div>
       <div class="founding-actions">
-        <a class="btn-outline on-dark" href="contact.html#contact">Become a Founding Member</a>
-        <a class="text-link" href="faq.html">See membership details &rarr;</a>
+        <a class="btn-outline on-dark" href="reserve.html">Become a Founding Member</a>
       </div>
+    </div>
+    <div class="container" style="text-align:center;margin-top:8px;">
+      <a class="text-link" href="contact.html#contact" style="color:var(--gold-soft);">Prefer to meet first? Schedule a Complimentary Meet &amp; Greet &rarr;</a>
     </div>
   </section>
 
@@ -412,7 +480,8 @@
   <section class="cta-band">
     <div class="container">
       <h2>I'd be honored to be your physician.</h2>
-      <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Meet &amp; Greet</a>
+      <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Complimentary Meet &amp; Greet</a>
+      <p style="margin-top:22px;"><a class="text-link" href="reserve.html" style="color:var(--gold-soft);">Ready to join? Become a Founding Member &rarr;</a></p>
     </div>
   </section>
 

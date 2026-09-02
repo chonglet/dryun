@@ -107,6 +107,7 @@
   .hero-split-text .eyebrow { color: var(--gold-soft); margin-bottom: 20px; }
   .hero-split-text h1 { color: #fff; font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 440; line-height: 1.2; }
   .hero-tagline { margin: 22px 0 0; font-size: 1.05rem; color: #e7e3d6; font-weight: 300; max-width: 46ch; }
+  .hero-benefit { margin: 16px 0 0; font-size: 0.94rem; color: var(--gold-soft); font-weight: 400; max-width: 46ch; line-height: 1.6; }
   .hero-tagline strong { font-weight: 500; color: #fff; }
   .hero-actions { display: flex; align-items: center; gap: 26px; margin-top: 32px; flex-wrap: wrap; }
   .hero-credentials {
@@ -138,7 +139,8 @@
   .founding-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
   .founding-text .eyebrow { color: var(--gold-soft); margin-bottom: 10px; }
   .founding-text h3 { color: #fff; font-size: 1.5rem; font-weight: 420; font-style: italic; }
-  .founding-text p { margin: 10px 0 0; color: #c9c5b6; font-size: 0.94rem; max-width: 54ch; font-weight: 300; }
+  .founding-text p { margin: 10px 0 0; color: #efece2; font-size: 1.04rem; max-width: 54ch; font-weight: 400; line-height: 1.6; }
+  .founding-text p strong { color: var(--gold-soft); font-weight: 700; }
   .founding-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; flex-shrink: 0; }
   @media (max-width: 760px) { .founding-grid { flex-direction: column; align-items: flex-start; } .founding-actions { align-items: flex-start; } }
 
@@ -239,6 +241,15 @@
   @media (max-width: 880px) { .steps { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
   .step { border-top: 1px solid var(--gold); padding-top: 20px; }
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  @media (max-width: 880px) { .review-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .review-grid blockquote {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 1.08rem; color: var(--ink);
+    line-height: 1.6; margin: 0 0 18px;
+  }
+  .review-grid cite { display: block; font-style: normal; font-family: 'Jost'; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-deep); }
+  .review-caption { text-align: center; margin-top: 50px; font-size: 0.82rem; color: var(--muted); }
+  .review-caption a { color: var(--gold-deep); margin-left: 8px; }
   .step .num { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.7rem; color: var(--gold); margin-bottom: 10px; }
   .step h3 { font-size: 0.98rem; margin-bottom: 8px; font-weight: 500; }
   .step p { color: var(--muted); font-size: 0.9rem; margin: 0; font-weight: 300; }
@@ -270,6 +281,20 @@
     outline: none; font-family: 'Jost', Arial, sans-serif; box-sizing: border-box;
   }
   input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,138,63,0.15); }
+
+  .reserve-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: start; }
+  @media (max-width: 860px) { .reserve-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .reserve-intro p { color: var(--muted); font-size: 1rem; margin: 0 0 18px; line-height: 1.7; }
+  .reserve-form { display: grid; gap: 20px; background: #fff; border: 1px solid var(--line); padding: 36px; box-shadow: 0 18px 40px rgba(20,23,31,0.06); }
+  .req { font-weight: 300; color: var(--muted); font-size: 0.78rem; }
+  .radio-row { display: flex; gap: 26px; }
+  .radio-row .radio-option { margin-right: 26px; }
+  .radio-row .radio-option:last-child { margin-right: 0; }
+  .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
+  .radio-option input, .checkbox-option input { width: auto; min-height: auto; }
+  .disclosure-box { background: var(--paper-2); border: 1px solid var(--line); padding: 18px 20px; }
+  .disclosure-box p { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .disclosure-box a { color: var(--gold-deep); text-decoration: underline; }
 
   /* FAQ */
   .faq-list { background: #fff; border: 1px solid var(--line); padding: 8px 40px; box-shadow: 0 18px 40px rgba(20,23,31,0.06); }
@@ -319,10 +344,10 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="care.html">Care</a><a href="midlife.html">Menopause &amp; Midlife</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
-      <a href="contact.html#contact" class="nav-cta-mobile">Schedule a Meet &amp; Greet</a>
+      <a href="reserve.html" class="nav-cta-mobile">Become a Founding Member</a>
     </nav>
     <div class="nav-right">
-      <a class="nav-cta" href="contact.html#contact">Schedule a Meet &amp; Greet</a>
+      <a class="nav-cta" href="reserve.html">Become a Founding Member</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -368,8 +393,8 @@
 
   <section class="quote-band">
     <div class="container">
-      <blockquote>&ldquo;Science provides the knowledge. The art is knowing you.&rdquo;</blockquote>
-      <cite>Dr. Yun, on her approach to care</cite>
+      <blockquote>&ldquo;She is the best doctor I have ever had and I'm 61 years old. She listens, she advocates, she's patient and comes with well rounded care from pharmaceuticals to holistic.&rdquo;</blockquote>
+      <cite>&mdash; TV B. &middot; Excerpt from a publicly posted Google patient review</cite>
     </div>
   </section>
 
@@ -412,7 +437,8 @@
   <section class="cta-band">
     <div class="container">
       <h2>Come share this joy with me.</h2>
-      <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Meet &amp; Greet</a>
+      <a class="btn-outline on-dark" href="contact.html#contact">Schedule a Complimentary Meet &amp; Greet</a>
+      <p style="margin-top:22px;"><a class="text-link" href="reserve.html" style="color:var(--gold-soft);">Ready to join? Become a Founding Member &rarr;</a></p>
     </div>
   </section>
 
