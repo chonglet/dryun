@@ -384,9 +384,8 @@
           <p style="margin-bottom:4px;"><strong style="color:var(--ink);font-weight:700;">Join in 2026 and secure your Founding Member rate for three years.</strong></p>
           <p style="color:var(--muted);font-weight:400;">New-member rates will increase in 2027.</p>
         </div>
-        <form action="https://formspree.io/f/mqewebdo" method="POST" class="reserve-form">
+        <form action="https://formspree.io/f/mqewebdo" method="POST" class="reserve-form" id="reserveForm">
           <input type="hidden" name="_subject" value="New Founding Membership Reservation - dryun.org" />
-          <input type="hidden" name="_next" value="https://dryun.org/thank-you.html" />
           <div class="grid-2">
             <div><label for="rfname">First Name <span class="req">(required)</span></label><input type="text" id="rfname" name="first_name" required /></div>
             <div><label for="rlname">Last Name <span class="req">(required)</span></label><input type="text" id="rlname" name="last_name" required /></div>
@@ -410,8 +409,37 @@
             <p>This practice does not bill insurance or Medicare. Questions? See our <a href="faq.html">FAQ</a>.</p>
             <label class="checkbox-option"><input type="checkbox" name="understand" required /> I understand</label>
           </div>
-          <button class="btn-outline" type="submit">Continue</button>
+          <button class="btn-outline" type="submit" id="reserveSubmitBtn">Continue</button>
+          <p id="reserveFormError" style="display:none;color:#a33;font-size:0.85rem;margin-top:8px;">Something went wrong submitting your information. Please try again, or email joy@dryun.org directly.</p>
         </form>
+        <script>
+          (function() {
+            var form = document.getElementById('reserveForm');
+            var btn = document.getElementById('reserveSubmitBtn');
+            var errorMsg = document.getElementById('reserveFormError');
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              btn.disabled = true;
+              btn.textContent = 'Submitting...';
+              errorMsg.style.display = 'none';
+              fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+              }).then(function(response) {
+                if (response.ok) {
+                  window.location.href = 'thank-you.html';
+                } else {
+                  throw new Error('Submission failed');
+                }
+              }).catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Continue';
+                errorMsg.style.display = 'block';
+              });
+            });
+          })();
+        </script>
       </div>
     </div>
   </section>
