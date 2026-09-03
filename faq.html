@@ -293,6 +293,8 @@
   .radio-row .radio-option { margin-right: 26px; }
   .radio-row .radio-option:last-child { margin-right: 0; }
   .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
+  .checkbox-option { align-items: flex-start; }
+  .checkbox-option input { margin-top: 3px; }
   .radio-option input, .checkbox-option input { width: auto; min-height: auto; }
   .disclosure-box { background: var(--paper-2); border: 1px solid var(--line); padding: 18px 20px; }
   .disclosure-box p { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
@@ -406,7 +408,7 @@
         <div class="faq-answer">Founding Members are the patients who join the practice during its inaugural year. As a thank-you for building this practice with Dr. Yun from the very beginning, their Founding Member rate is honored for their first three years of membership. To qualify, your first annual membership payment must be received by December 31, 2026.</div>
       </details>
 
-      <details class="faq-item">
+      <details class="faq-item" id="pricing">
         <summary>How does membership work?</summary>
         <div class="faq-answer">
           Membership is billed annually and covers your visits with Dr. Yun directly &mdash; there's no per-visit charge and no insurance billing. 2026 Founding Member rates:

@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ13YS3MWE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XZ13YS3MWE');
-</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Reserve Your Spot | Chong Yun, MD</title>
@@ -301,10 +293,13 @@
   .radio-row .radio-option { margin-right: 26px; }
   .radio-row .radio-option:last-child { margin-right: 0; }
   .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
+  .checkbox-option { align-items: flex-start; }
+  .checkbox-option input { margin-top: 3px; }
   .radio-option input, .checkbox-option input { width: auto; min-height: auto; }
   .disclosure-box { background: var(--paper-2); border: 1px solid var(--line); padding: 18px 20px; }
   .disclosure-box p { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
-  .disclosure-box a { color: var(--gold-deep); text-decoration: underline; }
+  .disclosure-box a { color: var(--gold-deep); text-decoration: none; border-bottom: 1px solid rgba(140,106,48,0.4); }
+  .disclosure-box a:hover { border-bottom-color: var(--gold-deep); }
 
   /* FAQ */
   .faq-list { background: #fff; border: 1px solid var(--line); padding: 8px 40px; box-shadow: 0 18px 40px rgba(20,23,31,0.06); }
@@ -414,8 +409,7 @@
             </div>
           </div>
           <div class="disclosure-box">
-            <p>This practice does not bill insurance or Medicare. Questions? See our <a href="faq.html">FAQ</a>.</p>
-            <label class="checkbox-option"><input type="checkbox" name="understand" required /> I understand</label>
+            <label class="checkbox-option"><input type="checkbox" name="understand" required /><span>I have reviewed the <a href="faq.html#pricing">membership rates</a> and understand that this is a membership-based practice that does not bill insurance or Medicare.</span></label>
           </div>
           <button class="btn-outline" type="submit" id="reserveSubmitBtn">Continue</button>
           <p id="reserveFormError" style="display:none;color:#a33;font-size:0.85rem;margin-top:8px;">Something went wrong submitting your information. Please try again, or email joy@dryun.org directly.</p>
