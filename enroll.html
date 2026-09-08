@@ -3,39 +3,323 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex,nofollow" />
-<title>Complete Your Membership Enrollment | Chong Yun, MD</title>
+<meta name="robots" content="noindex, nofollow" />
+<title>Complete Your Enrollment | Chong Yun, MD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,420;0,9..144,500;1,9..144,420&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,420;0,9..144,500;0,9..144,600;1,9..144,420;1,9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#12141b;--paper:#f8f2e6;--gold:#b0873f;--gold-deep:#8c6a30;--line:#ddc79a;--muted:#766f5a;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:'Jost',sans-serif;background:var(--paper);color:#201d16;line-height:1.6}.wrap{width:min(92%,880px);margin:0 auto}.top{background:var(--ink);color:#fff;padding:40px 0 34px;border-bottom:1px solid var(--gold)}.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#ddbf82;font-weight:600}.top h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);font-weight:420;margin:8px 0 10px}.top p{margin:0;color:#e7e3d6;max-width:60ch}.main{padding:48px 0 72px}.card{background:#fff;border:1px solid var(--line);padding:28px;box-shadow:0 18px 45px rgba(20,23,31,.08);margin-bottom:24px}.card h2{font-family:'Fraunces',serif;font-weight:420;font-size:1.5rem;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:700px){.grid{grid-template-columns:1fr}}label{display:block;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:6px}input,select{width:100%;padding:13px 12px;border:1px solid #ccb98e;background:#fff;font:inherit;color:var(--ink)}input:focus,select:focus{outline:2px solid rgba(176,135,63,.18);border-color:var(--gold)}.member{border:1px solid var(--line);padding:18px;margin:14px 0;background:#fffdf8}.member-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px}.member-title{font-family:'Fraunces',serif;font-size:1.1rem}.remove{background:none;border:0;color:#8c4c3e;cursor:pointer;font:inherit}.price{margin-top:12px;color:var(--gold-deep);font-weight:600}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:1px solid var(--gold-deep);background:var(--gold-deep);color:#fff;text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;cursor:pointer}.btn.secondary{background:transparent;color:var(--gold-deep)}.btn:disabled{opacity:.45;cursor:not-allowed}.summary-row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid #eee3cc}.summary-row:last-child{border-bottom:0}.total{display:flex;justify-content:space-between;gap:20px;margin-top:14px;padding-top:16px;border-top:2px solid var(--gold);font-family:'Fraunces',serif;font-size:1.35rem}.note{font-size:.9rem;color:var(--muted);margin-top:14px}.error{display:none;background:#fff0ec;color:#8a2f1d;border:1px solid #e1b2a7;padding:12px 14px;margin-top:14px}.foot{font-size:.78rem;color:var(--muted);text-align:center;margin-top:22px}.foot a{color:var(--gold-deep)}
+:root {
+  --ink: #12141b;
+  --paper: #f8f2e6;
+  --paper-2: #efe2c4;
+  --gold: #b0873f;
+  --gold-deep: #8c6a30;
+  --gold-soft: #ddbf82;
+  --line: #ddc79a;
+  --text: #201d16;
+  --muted: #766f5a;
+  --shadow: 0 30px 70px rgba(20, 23, 31, 0.22);
+  --max: 900px;
+  --error: #b3402f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: 'Jost', Arial, sans-serif; color: var(--text);
+  background: var(--paper); line-height: 1.7; font-size: 16px; font-weight: 300;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(176,135,63,0.07), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(176,135,63,0.06), transparent 40%);
+  background-attachment: fixed;
+}
+a { color: inherit; }
+.container { width: min(92%, var(--max)); margin: 0 auto; padding: 56px 0 100px; }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; margin: 0; color: var(--ink); font-weight: 460; letter-spacing: -0.01em; }
+.eyebrow {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--gold-deep);
+  font-weight: 600; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.eyebrow::before, .eyebrow::after { content: ""; width: 22px; height: 1px; background: var(--gold); display: inline-block; }
+.intro { max-width: 62ch; }
+.intro p { color: var(--muted); font-size: 1rem; }
+.panel {
+  background: #fff; border: 1px solid var(--line); padding: 36px;
+  box-shadow: 0 18px 40px rgba(20,23,31,0.06); margin-top: 36px;
+}
+.member-card {
+  border: 1px solid var(--line); background: var(--paper-2); padding: 24px;
+  margin-bottom: 18px; position: relative;
+}
+.member-card .member-head {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+}
+.member-card .member-head h3 { font-size: 1rem; font-style: italic; }
+.remove-member {
+  background: none; border: none; color: var(--error); font-size: 0.78rem;
+  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; font-family: 'Jost';
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+@media (max-width: 640px) { .field-row { grid-template-columns: 1fr; } }
+label { display: block; margin-bottom: 6px; font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+input[type="text"], input[type="email"], input[type="date"], select {
+  width: 100%; min-height: 46px; border-radius: 2px; border: 1px solid #d6cdb3;
+  background: #fdfcf7; padding: 10px 14px; font-size: 0.96rem; color: var(--text);
+  outline: none; font-family: 'Jost', Arial, sans-serif; box-sizing: border-box;
+}
+input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,138,63,0.15); }
+.category-badge {
+  display: inline-block; margin-top: 4px; font-size: 0.78rem; color: var(--gold-deep);
+  font-weight: 500;
+}
+.category-badge.ineligible { color: var(--error); }
+.add-member {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px;
+  border: 1px solid var(--gold); color: var(--ink); font-size: 0.74rem; letter-spacing: 0.12em;
+  text-transform: uppercase; background: transparent; cursor: pointer; font-family: 'Jost';
+  transition: all 0.2s ease;
+}
+.add-member:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.summary {
+  background: var(--ink); color: #fff; padding: 34px 36px; margin-top: 32px;
+}
+.summary h3 { color: var(--gold-soft); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; margin-bottom: 18px; font-family: 'Jost'; }
+.summary-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.14); font-size: 0.96rem; }
+.summary-row:last-of-type { border-bottom: none; }
+.summary-total { display: flex; justify-content: space-between; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--gold); font-family: 'Fraunces', serif; font-size: 1.3rem; font-style: italic; }
+.continue-btn {
+  width: 100%; margin-top: 28px; padding: 17px 30px; background: var(--gold-deep);
+  border: 1px solid var(--gold-deep); color: #fff; font-size: 0.8rem; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; font-family: 'Jost';
+}
+.continue-btn:hover:not(:disabled) { background: transparent; border-color: var(--gold-soft); color: var(--gold-soft); }
+.continue-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.error-banner {
+  background: #fbeceb; border: 1px solid var(--error); color: var(--error);
+  padding: 14px 18px; font-size: 0.9rem; margin-top: 18px; display: none;
+}
+.footnote { font-size: 0.82rem; color: var(--muted); margin-top: 20px; }
 </style>
 </head>
 <body>
-<section class="top"><div class="wrap"><div class="eyebrow">Private Enrollment</div><h1>Complete Your Membership Enrollment</h1><p>Please enter the household members you are enrolling. Your membership category and annual rate will be calculated automatically from date of birth.</p></div></section>
-<main class="main"><div class="wrap">
-<form id="enrollForm">
-<div class="card"><h2>Primary Contact</h2><p class="sub">This person will receive enrollment and payment communications.</p><div class="grid"><div><label for="contactFirst">First name</label><input id="contactFirst" required></div><div><label for="contactLast">Last name</label><input id="contactLast" required></div><div><label for="contactEmail">Email</label><input id="contactEmail" type="email" required></div><div><label for="contactPhone">Cell phone</label><input id="contactPhone" type="tel" required></div></div></div>
-<div class="card"><h2>Household Members</h2><p class="sub">Add each person who will be a member of the practice.</p><div id="members"></div><div class="actions"><button class="btn secondary" type="button" id="addMember">+ Add Household Member</button></div><div id="eligibilityError" class="error"></div></div>
-<div class="card"><h2>Your Annual Membership</h2><div id="summary"><p class="sub">Add at least one household member to see your total.</p></div><div class="total"><span>Annual total</span><span id="annualTotal">$0</span></div><p class="note">Discounted memberships for ages 10–26 are available only when the household includes at least one adult membership.</p><div class="actions"><button class="btn" type="submit" id="continueBtn" disabled>Continue to Membership Agreements</button></div><p class="note">The agreement and payment connection will be activated next. This page is currently a front-end enrollment preview only.</p></div>
-</form>
-<p class="foot">Questions? Email <a href="mailto:joy@dryun.org">joy@dryun.org</a></p>
-</div></main>
+<div class="container">
+  <span class="eyebrow">Household Enrollment</span>
+  <h1>Let's set up your membership.</h1>
+  <div class="intro">
+    <p>Add each member of your household who is enrolling. Membership rates are determined automatically by age. Once you've reviewed the total, you'll continue to the required membership agreement(s), then to payment.</p>
+  </div>
+
+  <form id="enroll-form" class="panel" novalidate>
+    <div id="members"></div>
+
+    <button type="button" class="add-member" id="add-member">+ Add Household Member</button>
+
+    <div class="summary">
+      <h3>Your Household Membership</h3>
+      <div id="summary-rows"></div>
+      <div class="summary-total">
+        <span>Annual Total</span>
+        <span id="summary-total">$0</span>
+      </div>
+    </div>
+
+    <div class="error-banner" id="error-banner"></div>
+
+    <button type="submit" class="continue-btn" id="continue-btn" disabled>Continue to Agreements</button>
+    <p class="footnote">You'll complete signing for each required agreement next, then be sent directly to secure payment. Nothing is charged until payment is completed.</p>
+  </form>
+</div>
+
 <script>
-(function(){
-const membersEl=document.getElementById('members'),summaryEl=document.getElementById('summary'),totalEl=document.getElementById('annualTotal'),continueBtn=document.getElementById('continueBtn'),errEl=document.getElementById('eligibilityError');
-let nextId=1;
-function ageFromDOB(value){if(!value)return null;const d=new Date(value+'T12:00:00');const t=new Date();let a=t.getFullYear()-d.getFullYear();const m=t.getMonth()-d.getMonth();if(m<0||(m===0&&t.getDate()<d.getDate()))a--;return a}
-function category(age){if(age===null)return null;if(age>=27)return{label:'Adult Founding Member',price:3000,type:'adult'};if(age>=16)return{label:'Family Member 16–26',price:1500,type:'young'};if(age>=10)return{label:'Child 10–15',price:750,type:'child'};return{label:'Please contact the practice',price:0,type:'ineligible'}}
-function memberCard(){const id=nextId++;const div=document.createElement('div');div.className='member';div.dataset.id=id;div.innerHTML=`<div class="member-head"><div class="member-title">Household member</div><button type="button" class="remove">Remove</button></div><div class="grid"><div><label>First name</label><input class="m-first" required></div><div><label>Last name</label><input class="m-last" required></div><div><label>Date of birth</label><input class="m-dob" type="date" required></div><div><label>Relationship to primary contact</label><select class="m-rel"><option value="Self">Self</option><option value="Spouse/Partner">Spouse/Partner</option><option value="Child">Child</option><option value="Other">Other</option></select></div></div><div class="price">Enter date of birth to determine membership.</div>`;div.querySelector('.remove').addEventListener('click',()=>{div.remove();recalc()});div.querySelectorAll('input,select').forEach(x=>x.addEventListener('input',recalc));membersEl.appendChild(div);recalc()}
-function recalc(){const cards=[...membersEl.querySelectorAll('.member')];let total=0,adultCount=0,hasIneligible=false,rows=[];cards.forEach(card=>{const age=ageFromDOB(card.querySelector('.m-dob').value);const c=category(age);const priceNode=card.querySelector('.price');if(!c){priceNode.textContent='Enter date of birth to determine membership.';return}if(c.type==='adult')adultCount++;if(c.type==='ineligible')hasIneligible=true;total+=c.price;const name=((card.querySelector('.m-first').value||'Member')+' '+(card.querySelector('.m-last').value||'')).trim();priceNode.textContent=c.type==='ineligible'?'Please contact the practice about membership for this age.':`${c.label} — $${c.price.toLocaleString()}/year`;rows.push({name,label:c.label,price:c.price,type:c.type})});
-const hasDependent=rows.some(r=>r.type==='young'||r.type==='child');let error='';if(hasDependent&&adultCount===0)error='A child or family member age 10–26 can receive the discounted household rate only when at least one adult membership is included.';if(hasIneligible)error='Please contact the practice regarding membership for children under age 10.';errEl.style.display=error?'block':'none';errEl.textContent=error;
-summaryEl.innerHTML=rows.length?rows.map(r=>`<div class="summary-row"><span>${r.name}<br><small>${r.label}</small></span><strong>$${r.price.toLocaleString()}</strong></div>`).join(''):'<p class="sub">Add at least one household member to see your total.</p>';totalEl.textContent='$'+total.toLocaleString();
-const valid=cards.length>0&&!error&&cards.every(c=>c.querySelector('.m-first').value.trim()&&c.querySelector('.m-last').value.trim()&&c.querySelector('.m-dob').value);continueBtn.disabled=!valid}
-document.getElementById('addMember').addEventListener('click',memberCard);document.querySelectorAll('#contactFirst,#contactLast,#contactEmail,#contactPhone').forEach(x=>x.addEventListener('input',recalc));document.getElementById('enrollForm').addEventListener('submit',function(e){e.preventDefault();alert('Enrollment agreements are not connected yet. This page is ready for the SignWell + Stripe backend connection.');});memberCard();
-})();
+// ---- Membership rules (mirrors current 2026 Founding Member rates) ----
+// Adjust here if pricing/brackets change; the backend re-validates everything server-side.
+const CATEGORIES = [
+  { id: 'adult',  label: 'Adult Founding',       min: 27, max: 200, price: 3000 },
+  { id: 'family', label: 'Family Member 16–26',  min: 16, max: 26,  price: 1500 },
+  { id: 'child',  label: 'Child 10–15',          min: 10, max: 15,  price: 750  },
+];
+
+function categoryForAge(age) {
+  if (age === null || isNaN(age)) return null;
+  return CATEGORIES.find(c => age >= c.min && age <= c.max) || null;
+}
+
+function ageFromDOB(dobStr) {
+  if (!dobStr) return null;
+  const dob = new Date(dobStr);
+  if (isNaN(dob.getTime())) return null;
+  const now = new Date();
+  let age = now.getFullYear() - dob.getFullYear();
+  const m = now.getMonth() - dob.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+  return age;
+}
+
+let memberCount = 0;
+const membersEl = document.getElementById('members');
+
+function addMember(isPrimary = false) {
+  memberCount++;
+  const id = 'm' + memberCount;
+  const wrap = document.createElement('div');
+  wrap.className = 'member-card';
+  wrap.dataset.id = id;
+  wrap.innerHTML = `
+    <div class="member-head">
+      <h3>${isPrimary ? 'Primary Adult (You)' : 'Household Member ' + (memberCount - 1)}</h3>
+      ${isPrimary ? '' : '<button type="button" class="remove-member">Remove</button>'}
+    </div>
+    <div class="field-row">
+      <div>
+        <label>Full Name</label>
+        <input type="text" class="f-name" required>
+      </div>
+      <div>
+        <label>Date of Birth</label>
+        <input type="date" class="f-dob" required>
+      </div>
+    </div>
+    <div class="field-row">
+      ${isPrimary ? `
+      <div>
+        <label>Email</label>
+        <input type="email" class="f-email" required>
+      </div>
+      <div>
+        <label>Relationship</label>
+        <input type="text" value="Primary applicant" disabled style="opacity:.6">
+      </div>` : `
+      <div>
+        <label>Relationship to Primary Adult</label>
+        <select class="f-relationship" required>
+          <option value="">Select…</option>
+          <option value="spouse">Spouse / Partner</option>
+          <option value="child">Child</option>
+          <option value="other">Other Dependent</option>
+        </select>
+      </div>
+      <div>
+        <label>Email (if age 16+)</label>
+        <input type="email" class="f-email">
+      </div>`}
+    </div>
+    <div class="category-badge" data-role="category">Enter date of birth to determine membership category.</div>
+  `;
+  membersEl.appendChild(wrap);
+
+  const dobInput = wrap.querySelector('.f-dob');
+  dobInput.addEventListener('change', () => updateCategory(wrap));
+  wrap.querySelectorAll('input, select').forEach(el => el.addEventListener('input', renderSummary));
+
+  const removeBtn = wrap.querySelector('.remove-member');
+  if (removeBtn) {
+    removeBtn.addEventListener('click', () => {
+      wrap.remove();
+      renderSummary();
+    });
+  }
+  renderSummary();
+}
+
+function updateCategory(wrap) {
+  const dob = wrap.querySelector('.f-dob').value;
+  const age = ageFromDOB(dob);
+  const badge = wrap.querySelector('[data-role="category"]');
+  const cat = categoryForAge(age);
+  wrap.dataset.age = age === null ? '' : age;
+  if (age === null) {
+    badge.textContent = 'Enter date of birth to determine membership category.';
+    badge.classList.remove('ineligible');
+    wrap.dataset.category = '';
+  } else if (!cat) {
+    badge.textContent = age < 10
+      ? 'Members under 10 aren\u2019t enrolled directly \u2014 please contact the office.'
+      : 'Please contact the office to confirm the right membership for this age.';
+    badge.classList.add('ineligible');
+    wrap.dataset.category = '';
+  } else {
+    badge.textContent = `${cat.label} \u2014 $${cat.price.toLocaleString()}/yr`;
+    badge.classList.remove('ineligible');
+    wrap.dataset.category = cat.id;
+  }
+  renderSummary();
+}
+
+function collectMembers() {
+  return Array.from(membersEl.querySelectorAll('.member-card')).map(wrap => {
+    const isPrimary = wrap.dataset.id === 'm1';
+    return {
+      isPrimary,
+      name: wrap.querySelector('.f-name').value.trim(),
+      dob: wrap.querySelector('.f-dob').value,
+      email: wrap.querySelector('.f-email') ? wrap.querySelector('.f-email').value.trim() : '',
+      relationship: isPrimary ? 'primary' : (wrap.querySelector('.f-relationship')?.value || ''),
+      category: wrap.dataset.category || '',
+      age: wrap.dataset.age || '',
+    };
+  });
+}
+
+function renderSummary() {
+  const members = collectMembers();
+  const rowsEl = document.getElementById('summary-rows');
+  const totalEl = document.getElementById('summary-total');
+  const continueBtn = document.getElementById('continue-btn');
+  rowsEl.innerHTML = '';
+  let total = 0;
+  let allValid = members.length > 0;
+
+  members.forEach(m => {
+    const cat = CATEGORIES.find(c => c.id === m.category);
+    if (!m.name || !m.dob || !cat || (m.isPrimary && !m.email)) allValid = false;
+    if (!m.isPrimary && m.category === 'family' && !m.email) allValid = false;
+    if (cat) {
+      total += cat.price;
+      const row = document.createElement('div');
+      row.className = 'summary-row';
+      row.innerHTML = `<span>${m.name || '(name pending)'} — ${cat.label}</span><span>$${cat.price.toLocaleString()}</span>`;
+      rowsEl.appendChild(row);
+    }
+  });
+
+  totalEl.textContent = '$' + total.toLocaleString();
+  continueBtn.disabled = !allValid || total === 0;
+}
+
+document.getElementById('add-member').addEventListener('click', () => addMember(false));
+addMember(true); // primary adult always present
+
+const form = document.getElementById('enroll-form');
+const errorBanner = document.getElementById('error-banner');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorBanner.style.display = 'none';
+  const continueBtn = document.getElementById('continue-btn');
+  continueBtn.disabled = true;
+  continueBtn.textContent = 'Preparing your agreement…';
+
+  const members = collectMembers();
+
+  try {
+    // NOTE: set BACKEND_URL to your deployed Vercel project URL once live.
+    const BACKEND_URL = window.DRYUN_BACKEND_URL || 'https://dryun-enrollment.chonglet.workers.dev';
+    const res = await fetch(BACKEND_URL + '/api/create-enrollment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ members }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.signingUrl) {
+      throw new Error(data.error || 'Something went wrong preparing your enrollment.');
+    }
+    window.location.href = data.signingUrl;
+  } catch (err) {
+    errorBanner.textContent = err.message || 'Something went wrong. Please try again, or contact the office.';
+    errorBanner.style.display = 'block';
+    continueBtn.disabled = false;
+    continueBtn.textContent = 'Continue to Agreements';
+  }
+});
 </script>
 </body>
 </html>
