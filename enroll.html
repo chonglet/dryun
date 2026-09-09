@@ -309,10 +309,15 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({ members }),
     });
     const data = await res.json();
-    if (!res.ok || !data.signingUrl) {
+    if (!res.ok || !data.signingUrl || !data.payUrl) {
       throw new Error(data.error || 'Something went wrong preparing your enrollment.');
     }
-    window.location.href = data.signingUrl;
+
+    // Embedded signing needs SignWell's own JS widget to detect
+    // completion — a plain page redirect to the signing URL never
+    // fires our redirect, because embedded sessions don't support the
+    // API's redirect_url the way hosted/shared links do.
+    openSignWellEmbed(data.signingUrl, data.payUrl);
   } catch (err) {
     errorBanner.textContent = err.message || 'Something went wrong. Please try again, or contact the office.';
     errorBanner.style.display = 'block';
@@ -320,6 +325,37 @@ form.addEventListener('submit', async (e) => {
     continueBtn.textContent = 'Continue to Agreements';
   }
 });
+
+function openSignWellEmbed(signingUrl, payUrl) {
+  function launch() {
+    const embed = new window.SignWellEmbed({
+      url: signingUrl,
+      events: {
+        completed: () => { window.location.href = payUrl; },
+        closed: () => {
+          continueBtn.disabled = false;
+          continueBtn.textContent = 'Continue to Agreements';
+        },
+      },
+    });
+    embed.open();
+  }
+
+  if (window.SignWellEmbed) {
+    launch();
+    return;
+  }
+  const script = document.createElement('script');
+  script.src = 'https://static.signwell.com/assets/embedded.js';
+  script.onload = launch;
+  script.onerror = () => {
+    errorBanner.textContent = 'Could not load the signing window. Please try again, or contact the office.';
+    errorBanner.style.display = 'block';
+    continueBtn.disabled = false;
+    continueBtn.textContent = 'Continue to Agreements';
+  };
+  document.head.appendChild(script);
+}
 </script>
 </body>
 </html>
