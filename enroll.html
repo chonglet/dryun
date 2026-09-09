@@ -156,6 +156,7 @@ function ageFromDOB(dobStr) {
 
 let memberCount = 0;
 const membersEl = document.getElementById('members');
+const continueBtn = document.getElementById('continue-btn');
 
 function addMember(isPrimary = false) {
   memberCount++;
@@ -259,7 +260,6 @@ function renderSummary() {
   const members = collectMembers();
   const rowsEl = document.getElementById('summary-rows');
   const totalEl = document.getElementById('summary-total');
-  const continueBtn = document.getElementById('continue-btn');
   rowsEl.innerHTML = '';
   let total = 0;
   let allValid = members.length > 0;
@@ -289,7 +289,6 @@ const errorBanner = document.getElementById('error-banner');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorBanner.style.display = 'none';
-  const continueBtn = document.getElementById('continue-btn');
   continueBtn.disabled = true;
   continueBtn.textContent = 'Preparing your agreement…';
 
