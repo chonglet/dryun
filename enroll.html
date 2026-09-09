@@ -125,7 +125,7 @@ input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgb
     <div class="error-banner" id="error-banner"></div>
 
     <button type="submit" class="continue-btn" id="continue-btn" disabled>Continue to Agreements</button>
-    <p class="footnote">You'll complete signing for each required agreement next, then be sent directly to secure payment. Nothing is charged until payment is completed.</p>
+    <p class="footnote">Each household member has a separate agreement to sign, one after another. Once all are signed, you'll be sent directly to secure payment. Nothing is charged until payment is completed.</p>
   </form>
 </div>
 
@@ -304,15 +304,11 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({ members }),
     });
     const data = await res.json();
-    if (!res.ok || !data.signingUrl || !data.payUrl) {
+    if (!res.ok || !data.signingDocuments || !data.payUrl) {
       throw new Error(data.error || 'Something went wrong preparing your enrollment.');
     }
 
-    // Embedded signing needs SignWell's own JS widget to detect
-    // completion — a plain page redirect to the signing URL never
-    // fires our redirect, because embedded sessions don't support the
-    // API's redirect_url the way hosted/shared links do.
-    openSignWellEmbed(data.signingUrl, data.payUrl);
+    signAllInSequence(data.signingDocuments, data.payUrl);
   } catch (err) {
     errorBanner.textContent = err.message || 'Something went wrong. Please try again, or contact the office.';
     errorBanner.style.display = 'block';
@@ -321,12 +317,31 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-function openSignWellEmbed(signingUrl, payUrl) {
+function signAllInSequence(signingDocuments, payUrl) {
+  let index = 0;
+
+  function signNext() {
+    if (index >= signingDocuments.length) {
+      window.location.href = payUrl;
+      return;
+    }
+    const doc = signingDocuments[index];
+    continueBtn.textContent = `Signing for ${doc.name} (${index + 1} of ${signingDocuments.length})…`;
+    openSignWellEmbed(doc.signingUrl, () => {
+      index++;
+      signNext();
+    });
+  }
+
+  signNext();
+}
+
+function openSignWellEmbed(signingUrl, onCompleted) {
   function launch() {
     const embed = new window.SignWellEmbed({
       url: signingUrl,
       events: {
-        completed: () => { window.location.href = payUrl; },
+        completed: () => { onCompleted(); },
         closed: () => {
           continueBtn.disabled = false;
           continueBtn.textContent = 'Continue to Agreements';
