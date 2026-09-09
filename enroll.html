@@ -336,12 +336,19 @@ function signAllInSequence(signingDocuments, payUrl) {
 }
 
 function openSignWellEmbed(signingUrl, onCompleted) {
+  let handled = false; // guard: SignWell's embed can fire 'completed' more than once per document
+
   function launch() {
     const embed = new window.SignWellEmbed({
       url: signingUrl,
       events: {
-        completed: () => { onCompleted(); },
+        completed: () => {
+          if (handled) return;
+          handled = true;
+          onCompleted();
+        },
         closed: () => {
+          if (handled) return;
           continueBtn.disabled = false;
           continueBtn.textContent = 'Continue to Agreements';
         },
