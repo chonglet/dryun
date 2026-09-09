@@ -105,7 +105,7 @@ input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgb
   <span class="eyebrow">Household Enrollment</span>
   <h1>Let's set up your membership.</h1>
   <div class="intro">
-    <p>Add each member of your household who is enrolling. Membership rates are determined automatically by age. Once you've reviewed the total, you'll continue to the required membership agreement(s), then to payment.</p>
+    <p>Add each member of your household who is enrolling. Membership rates are determined automatically by age. All agreements and communications will be sent to the primary applicant's email — other household members don't need their own.</p>
   </div>
 
   <form id="enroll-form" class="panel" novalidate>
@@ -178,7 +178,7 @@ function addMember(isPrimary = false) {
         <input type="date" class="f-dob" required>
       </div>
     </div>
-    <div class="field-row">
+    <div class="field-row" style="${isPrimary ? '' : 'grid-template-columns: 1fr;'}">
       ${isPrimary ? `
       <div>
         <label>Email</label>
@@ -196,10 +196,6 @@ function addMember(isPrimary = false) {
           <option value="child">Child</option>
           <option value="other">Other Dependent</option>
         </select>
-      </div>
-      <div>
-        <label>Email (if age 16+)</label>
-        <input type="email" class="f-email">
       </div>`}
     </div>
     <div class="category-badge" data-role="category">Enter date of birth to determine membership category.</div>
@@ -271,7 +267,6 @@ function renderSummary() {
   members.forEach(m => {
     const cat = CATEGORIES.find(c => c.id === m.category);
     if (!m.name || !m.dob || !cat || (m.isPrimary && !m.email)) allValid = false;
-    if (!m.isPrimary && m.category === 'family' && !m.email) allValid = false;
     if (cat) {
       total += cat.price;
       const row = document.createElement('div');
