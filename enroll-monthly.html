@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Monthly Enrollment | Chong Yun, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,420;0,9..144,500;0,9..144,600;1,9..144,420;1,9..144,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #12141b;
+  --paper: #f8f2e6;
+  --paper-2: #efe2c4;
+  --gold: #b0873f;
+  --gold-deep: #8c6a30;
+  --gold-soft: #ddbf82;
+  --line: #ddc79a;
+  --text: #201d16;
+  --muted: #766f5a;
+  --error: #b3402f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: 'Jost', Arial, sans-serif; color: var(--text);
+  background: var(--paper); line-height: 1.7; font-size: 16px; font-weight: 300;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(176,135,63,0.07), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(176,135,63,0.06), transparent 40%);
+  background-attachment: fixed;
+}
+.container { width: min(92%, 700px); margin: 0 auto; padding: 56px 0 100px; }
+h1 { font-family: 'Fraunces', Georgia, serif; margin: 0 0 8px; color: var(--ink); font-weight: 460; font-size: 1.9rem; }
+.eyebrow {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--gold-deep);
+  font-weight: 600; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.eyebrow::before, .eyebrow::after { content: ""; width: 22px; height: 1px; background: var(--gold); display: inline-block; }
+.intro p { color: var(--muted); font-size: 1rem; margin: 0 0 28px; }
+.panel {
+  background: #fff; border: 1px solid var(--line); padding: 36px;
+  box-shadow: 0 18px 40px rgba(20,23,31,0.06);
+}
+label { display: block; margin-bottom: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+input[type="text"], input[type="email"] {
+  width: 100%; min-height: 46px; border-radius: 2px; border: 1px solid #d6cdb3;
+  background: #fdfcf7; padding: 12px 14px; font-size: 0.96rem; color: var(--text);
+  outline: none; font-family: 'Jost', Arial, sans-serif; box-sizing: border-box; margin-bottom: 18px;
+}
+input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,138,63,0.15); }
+.summary { background: var(--ink); color: #fff; padding: 24px 28px; margin: 24px 0; }
+.summary-row { display: flex; justify-content: space-between; font-family: 'Fraunces', serif; font-size: 1.2rem; font-style: italic; }
+.continue-btn {
+  width: 100%; margin-top: 8px; padding: 17px 30px; background: var(--gold-deep);
+  border: 1px solid var(--gold-deep); color: #fff; font-size: 0.8rem; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; font-family: 'Jost';
+}
+.continue-btn:hover:not(:disabled) { background: transparent; border-color: var(--gold-deep); color: var(--gold-deep); }
+.continue-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.error-banner {
+  background: #fbeceb; border: 1px solid var(--error); color: var(--error);
+  padding: 14px 18px; font-size: 0.9rem; margin-top: 18px; display: none;
+}
+.footnote { font-size: 0.82rem; color: var(--muted); margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <span class="eyebrow">Individual Membership — Monthly</span>
+  <h1>Complete your enrollment.</h1>
+  <div class="intro">
+    <p>You've been set up for monthly billing. Enter your information below to sign your agreement and complete payment.</p>
+  </div>
+
+  <form id="enroll-form" class="panel" novalidate>
+    <label for="f-name">Full Name</label>
+    <input type="text" id="f-name" required>
+
+    <label for="f-email">Email</label>
+    <input type="email" id="f-email" required>
+
+    <div class="summary">
+      <div class="summary-row">
+        <span>Adult Membership (Monthly)</span>
+        <span>$250 / mo</span>
+      </div>
+    </div>
+
+    <div class="error-banner" id="error-banner"></div>
+
+    <button type="submit" class="continue-btn" id="continue-btn">Continue to Agreement</button>
+    <p class="footnote">You'll sign your agreement first, then be sent directly to secure payment. Nothing is charged until payment is completed.</p>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById('enroll-form');
+const continueBtn = document.getElementById('continue-btn');
+const errorBanner = document.getElementById('error-banner');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorBanner.style.display = 'none';
+  continueBtn.disabled = true;
+  continueBtn.textContent = 'Preparing your agreement…';
+
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+
+  if (!name || !email) {
+    errorBanner.textContent = 'Please enter your name and email.';
+    errorBanner.style.display = 'block';
+    continueBtn.disabled = false;
+    continueBtn.textContent = 'Continue to Agreement';
+    return;
+  }
+
+  try {
+    const res = await fetch('https://dryun-enrollment.chonglet.workers.dev/api/create-enrollment-monthly', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.signingDocuments || !data.payUrl) {
+      throw new Error(data.error || 'Something went wrong preparing your enrollment.');
+    }
+
+    openSignWellEmbed(data.signingDocuments[0].signingUrl, () => {
+      window.location.href = data.payUrl;
+    });
+  } catch (err) {
+    errorBanner.textContent = err.message || 'Something went wrong. Please try again, or contact the office.';
+    errorBanner.style.display = 'block';
+    continueBtn.disabled = false;
+    continueBtn.textContent = 'Continue to Agreement';
+  }
+});
+
+function openSignWellEmbed(signingUrl, onCompleted) {
+  let handled = false;
+
+  function launch() {
+    const embed = new window.SignWellEmbed({
+      url: signingUrl,
+      events: {
+        completed: () => {
+          if (handled) return;
+          handled = true;
+          onCompleted();
+        },
+        closed: () => {
+          if (handled) return;
+          continueBtn.disabled = false;
+          continueBtn.textContent = 'Continue to Agreement';
+        },
+      },
+    });
+    embed.open();
+  }
+
+  if (window.SignWellEmbed) {
+    launch();
+    return;
+  }
+  const script = document.createElement('script');
+  script.src = 'https://static.signwell.com/assets/embedded.js';
+  script.onload = launch;
+  script.onerror = () => {
+    errorBanner.textContent = 'Could not load the signing window. Please try again, or contact the office.';
+    errorBanner.style.display = 'block';
+    continueBtn.disabled = false;
+    continueBtn.textContent = 'Continue to Agreement';
+  };
+  document.head.appendChild(script);
+}
+</script>
+</body>
+</html>
